@@ -1,5 +1,5 @@
 import react from 'react';
-import { Text, View, StyleSheet, Dimensions, Image } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 import Logo from '../../assets/BrandLogo.png';
 import { Cinput } from '../../components/Cinput';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
@@ -33,10 +33,10 @@ export default function Login() {
                         onChangeText={setEmail}
                         value=""
                     />
-                    
-                </View>
-
-                <View style={styles.bottomBox}>
+                                    
+                <TouchableOpacity style={styles.boxButton}>
+                        <Text style={styles.button}> Login </Text>
+                    </TouchableOpacity>
 
                 </View>
             </View>  
@@ -90,5 +90,25 @@ const styles = StyleSheet.create({
        
 
 
+    },
+    boxButton:{
+        backgroundColor: "#780000", 
+        marginTop: 15,
+        borderWidth: 1,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '50%',
+        height: 40,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 7 },
+        shadowOpacity: 0.43,
+        shadowRadius: 9.51,
+        elevation: 15,
+    },
+    button:{
+        color: '#F4F8FF',
+        fontSize: 20,
+        fontWeight: 'bold',
     },
 })
