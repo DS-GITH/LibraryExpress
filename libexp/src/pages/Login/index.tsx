@@ -3,8 +3,14 @@ import { Text, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'rea
 import Logo from '../../assets/BrandLogo.png';
 import { Cinput } from '../../components/Cinput';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/StackNavigation';
+import { useNavigation } from '@react-navigation/native';
+
+type LoginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function Login() {
+  const navigation = useNavigation<LoginScreenProp>();
 
     const [email, setEmail] = react.useState('');
     const [password, setPassword] = react.useState('');
