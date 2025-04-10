@@ -2,6 +2,7 @@ import react from 'react';
 import { Text, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 import Logo from '../../assets/BrandLogo.png';
 import { Cinput } from '../../components/Cinput';
+import { Pinput } from '../../components/Pinput';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/StackNavigation';
@@ -12,8 +13,24 @@ type LoginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 export default function Login() {
   const navigation = useNavigation<LoginScreenProp>();
 
-    const [email, setEmail] = react.useState('');
-    const [password, setPassword] = react.useState('');
+    const [email, setEmail] = react.useState('EmailDoUsuario');
+    const [password, setPassword] = react.useState('SenhaDoUsuario');
+
+    async function GetLogin() {
+        try {
+            console.log("Email:", email, "Password:", password); 
+            if (!email || !password) {
+                
+                console.log("Campos vazios!"); 
+                return;
+            }
+            navigation.navigate("Menu"); 
+            console.log("Logado com sucesso!"); 
+        } catch (error) {
+            
+            console.log("Rapaz, deu algo errado no login aí:", error);
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -29,18 +46,18 @@ export default function Login() {
                         Icon="email"
                         placeholder="Enter your email"
                         onChangeText={setEmail}
-                        value=""
+                        value={email}
                     />
 
-                    <Cinput
+                    <Pinput
                         label="Senha"
                         Icon="password"
                         placeholder="Enter your password"
-                        onChangeText={setEmail}
-                        value=""
+                        onChangeText={setPassword}
+                        value={password}
                     />
                                     
-                <TouchableOpacity style={styles.boxButton}>
+                <TouchableOpacity style={styles.boxButton} onPress={GetLogin}>
                         <Text style={styles.button}> Login </Text>
                     </TouchableOpacity>
 
