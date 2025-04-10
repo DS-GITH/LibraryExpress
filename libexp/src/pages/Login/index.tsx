@@ -54,7 +54,7 @@ export default function Login() {
                         Icon="password"
                         placeholder="Enter your password"
                         onChangeText={setPassword}
-                        value={password}
+                        value={password}  
                     />
                                     
                 <TouchableOpacity style={styles.boxButton} onPress={GetLogin}>

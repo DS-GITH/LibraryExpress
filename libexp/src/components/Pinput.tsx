@@ -12,6 +12,10 @@ type PinputProps = {
 };
 
 export const Pinput: React.FC<PinputProps> = ({ label, Icon, placeholder, secureTextEntry, onChangeText, value }) => {
+
+       const [showPassword, setShowPassword] = react.useState(true);
+
+    
     return(
         <>
         <TextInput>{label}</TextInput>
@@ -21,8 +25,9 @@ export const Pinput: React.FC<PinputProps> = ({ label, Icon, placeholder, secure
                     placeholder={placeholder}
                     onChangeText={onChangeText}
                     value={value}
+                    secureTextEntry={showPassword}
                     />
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                         <MaterialIcons name={Icon} size={24} color="black" style={{marginRight: 10,}} />
                     </TouchableOpacity>
             </View>
