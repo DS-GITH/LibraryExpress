@@ -28,7 +28,7 @@ export const Pinput: React.FC<PinputProps> = ({ label, Icon, placeholder, secure
                     secureTextEntry={showPassword}
                     />
                     <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                        <MaterialIcons name={Icon} size={24} color="black" style={{marginRight: 10,}} />
+                        <MaterialIcons name={Icon} size={24} color={showPassword ? "black" : "#780000"} style={{marginRight: 10, } } />
                     </TouchableOpacity>
             </View>
 
