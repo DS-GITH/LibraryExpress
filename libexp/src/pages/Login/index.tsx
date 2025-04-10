@@ -16,6 +16,12 @@ export default function Login() {
     const [email, setEmail] = react.useState('EmailDoUsuario');
     const [password, setPassword] = react.useState('SenhaDoUsuario');
 
+    const Valid = () => {
+        if (email !== '' && password !== '') {
+            return true;
+        }
+    };
+
     async function GetLogin() {
         try {
             console.log("Email:", email, "Password:", password); 
@@ -57,7 +63,7 @@ export default function Login() {
                         value={password}  
                     />
                                     
-                <TouchableOpacity style={styles.boxButton} onPress={GetLogin}>
+                <TouchableOpacity style={[styles.boxButton, (!Valid()) ? styles.boxButtonInvalid : '']} onPress={GetLogin}>
                         <Text style={styles.button}> Login </Text>
                     </TouchableOpacity>
 
@@ -128,6 +134,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.43,
         shadowRadius: 9.51,
         elevation: 15,
+    },
+    boxButtonInvalid:{
+        opacity: 0.5,
     },
     button:{
         color: '#F4F8FF',
